@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="632751ae-a278-4247-b790-5a375324d29a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="NO_DATA_ADAPTER"/>
+	<queryString language="JSON">
+		<![CDATA[]]>
+	</queryString>
+	<field name="cedula" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="cedula"/>
+		<fieldDescription><![CDATA[cedula]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="nombre"/>
+		<fieldDescription><![CDATA[nombre]]></fieldDescription>
+	</field>
+	<title>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="240" height="37" uuid="70156680-83b3-4c58-81c8-5c63968c2c98"/>
+				<textElement>
+					<font size="30"/>
+				</textElement>
+				<text><![CDATA[Listado Simple]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="1" width="100" height="20" uuid="e1cab522-8c89-4071-94c3-6f6d31a5c3dd"/>
+				<text><![CDATA[cedula]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="336" height="20" uuid="456c50bc-6663-4437-b6fa-926131265f7d"/>
+				<text><![CDATA[nombre]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="1" width="100" height="20" uuid="fa8a4873-0f01-4b3c-86b2-33213e0e19e6"/>
+				<textFieldExpression><![CDATA[$F{cedula}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="336" height="20" uuid="945ba680-926f-41a0-ac61-cda7f5ee6d75"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
