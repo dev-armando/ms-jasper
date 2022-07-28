@@ -3,8 +3,9 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="customers" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cd73f355-ac7a-4eec-a2c1-ca42f9d14db6">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Digital Oceam"/>
+	<parameter name="name" class="java.lang.String" nestedType="java.lang.String"/>
 	<queryString language="SQL">
-		<![CDATA[select customer_name , gender from  `tabCustomer` ]]>
+		<![CDATA[select customer_name , gender from  `tabCustomer`  where name like  $P{name}]]>
 	</queryString>
 	<field name="customer_name" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="customer_name"/>

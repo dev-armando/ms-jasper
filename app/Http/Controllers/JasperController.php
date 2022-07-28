@@ -47,23 +47,16 @@ class JasperController extends Controller
      
       $options = [
           'format' => [ 'pdf' , 'html' , 'csv'],
-          'db_connection' => [
-              'driver' => 'mysql',
-              'username' => env("DB_USERNAME"),
-              'password' => env("DB_PASSWORD"),
-              'host' => env("DB_HOST"),
-              'database' => env("DB_DATABASE"),
-              'port' => env("DB_PORT"),
-          ],
-          'params' => [],
+          'params' => $request->get('params') ?? [],
    
       ];
 
-      $jasper =  new Jasper($input  , $options ) ;
+      $jasper =  new Jasper($input  , $options  ) ;
       $jasper->execute();
+      
+    
 
-
-      return [ "1" , $request->all()]; 
+      return [ "1" , [json_decode(json_encode($request->get('params')) )] ]; 
     }
 
     //
