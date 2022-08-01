@@ -7,16 +7,17 @@ use PHPJasper\PHPJasper;
 class JasperGeneratorService 
 {
     
-    private $output = "/home/erpnext/frappe-bench-armando-rojas/ms-jasper-erpnext/public/output/report" ;
+    private $output  ;
     private $jasper; 
     private $input; 
 
-    public function __construct($input , $options )
+    public function __construct($input , $options , $name )
     {
         $this->jasper = new PHPJasper();
         $this->input = $input ; 
         $this->options = $options ; 
         $this->options['db_connection'] = $this->getConnection();
+        $this->output = env('OUTPUT_FILES') . '/' . $name; 
     }
 
     public function execute(){

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\JasperGeneratorService as Jasper; 
+use App\Services\ErpnextService as ERPNEXT; 
 
 class JasperController extends Controller
 {
@@ -33,7 +34,7 @@ class JasperController extends Controller
 
 
 
-      $jasper =  new Jasper($input  , $options ) ;
+      $jasper =  new Jasper($input  , $options , 'report' ) ;
       $jasper->execute();
     
 
@@ -41,22 +42,27 @@ class JasperController extends Controller
 
     }
 
-    public function show(Request $request){
+    public function show($id , Request $request){
 
-      $input = "/home/erpnext/frappe-bench-armando-rojas/ms-jasper-erpnext/public/templates/customers.jrxml";
+      $erpnext = new ERPNEXT(); 
+      $response = $erpnext->getReportForId($id);
+
      
+      $input = env('PRIVATE_FILES') . $response->report_file ; 
+
       $options = [
-          'format' => [ 'pdf' , 'html' , 'csv'],
+          'format' => $request->get('format') ?? [ 'pdf'] ,
           'params' => $request->get('params') ?? [],
    
       ];
 
-      $jasper =  new Jasper($input  , $options  ) ;
+      $jasper =  new Jasper($input  , $options , $response->report_name  ) ;
       $jasper->execute();
-      
-    
 
-      return [ "1" , [json_decode(json_encode($request->get('params')) )] ]; 
+       return [ 
+        'params' => $request->get('params') ?? [] , 
+        'data' => ['url' => env('APP_URL') .'/output/' .  $response->report_name . '.pdf'] ,
+        ] ;
     }
 
     //

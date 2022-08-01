@@ -20,4 +20,4 @@ $router->get('/', function () use ($router) {
 $router->get('/test', 'JasperController@index');
 
 
-$router->get('/jaspert','JasperController@show');
+$router->get('/jaspert/{id}','JasperController@show');
